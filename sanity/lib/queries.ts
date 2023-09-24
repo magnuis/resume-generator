@@ -3,7 +3,7 @@ import { groq } from "next-sanity";
 
 // get all resumes
 export const resumesQuery = groq`
-    *[_type == "resume" && defined(slug.current)][] {
+    *[_type == "resume" && defined(slug.current) && public == true][] {
         public,
         title, 
         slug, 
