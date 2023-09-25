@@ -8,5 +8,5 @@ export async function GET(req: NextRequest): Promise<Response> {
   const { slug } = query;
 
   draftMode().enable();
-  redirect(`/${slug}`);
+  redirect(`/resumes/${slug}`);
 }

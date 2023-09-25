@@ -11,15 +11,24 @@ export default defineType({
       type: "boolean",
     }),
     defineField({
-      name: "slug",
-      title: "Slug (f.eks. 'fornavn-etternavn')",
-      type: "slug",
+      name: "name",
+      title: "Navn",
+      type: "string",
     }),
     defineField({
       name: "employee",
       title: "Konsulent",
       type: "reference",
       to: { type: "employee" },
+    }),
+    defineField({
+      name: "slug",
+      title: "Slug (trykk generer :))",
+      type: "slug",
+      options: {
+        source: "name",
+        maxLength: 96,
+      },
     }),
     defineField({
       name: "background",
