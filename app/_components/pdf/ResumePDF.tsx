@@ -1,4 +1,3 @@
-"use client";
 import {
   Document,
   Page,
@@ -190,8 +189,8 @@ const Resume = ({ data, logo }: Props) => (
             }}
           >
             {data.background &&
-              data.background.map((item) => (
-                <View key={item.title} style={{ marginTop: "15px" }}>
+              data.background.map((item, index) => (
+                <View key={`backgound-${index}`} style={{ marginTop: "15px" }}>
                   <Text
                     style={{ fontSize: 9 }}
                   >{`(${item.from} - ${item.to})`}</Text>
@@ -233,8 +232,8 @@ const Resume = ({ data, logo }: Props) => (
             }}
           >
             {data.engagement &&
-              data.engagement.map((item) => (
-                <View key={item.title} style={{ marginTop: "15px" }}>
+              data.engagement.map((item, index) => (
+                <View key={`engagement-${index}`} style={{ marginTop: "15px" }}>
                   <Text
                     style={{ fontSize: 9 }}
                   >{`(${item.from} - ${item.to})`}</Text>
@@ -276,8 +275,8 @@ const Resume = ({ data, logo }: Props) => (
             }}
           >
             {data.expertise &&
-              data.expertise.map((item) => (
-                <View key={item.title} style={{ marginTop: "15px" }}>
+              data.expertise.map((item, index) => (
+                <View key={`expertise-${index}`} style={{ marginTop: "15px" }}>
                   <Text
                     style={{
                       fontSize: 14,
@@ -296,8 +295,8 @@ const Resume = ({ data, logo }: Props) => (
                     }}
                   >
                     {item.projects &&
-                      item.projects.map((project) => (
-                        <View key={project}>
+                      item.projects.map((project, index) => (
+                        <View key={`project-${index}`}>
                           <Text
                             style={{
                               fontSize: 9,
@@ -322,9 +321,8 @@ const Resume = ({ data, logo }: Props) => (
           >
             {data.experience &&
               data.experience.map((item, index) => (
-                <>
+                <View key={`experience-${index}`}>
                   <View
-                    key={item.title}
                     style={{
                       display: "flex",
                       flexDirection: "row",
@@ -381,7 +379,7 @@ const Resume = ({ data, logo }: Props) => (
                       {item.description}
                     </Text>
                   </View>
-                </>
+                </View>
               ))}
           </View>
         </View>

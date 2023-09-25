@@ -24,11 +24,11 @@ export default function Resumes({ resumes = [] }: { resumes: ResumeType[] }) {
       </span>
 
       {resumes.map(
-        (resume) =>
+        (resume, index) =>
           resume.employee?.image && (
             <Link
-              key={resume.title}
-              href={resume.slug.current}
+              key={`resume-${index}`}
+              href={`resumes/${resume.slug.current}`}
               className="p-4 hover:bg-gray-50 border-t-[1px] border-[#333333] mb-4"
             >
               <Image
