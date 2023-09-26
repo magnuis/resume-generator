@@ -104,7 +104,8 @@ const styles = StyleSheet.create({
     borderLeft: "solid",
     borderLeftWidth: "1px",
     borderColor: "#595959",
-    paddingLeft: "24px",
+    paddingLeft: "25px",
+    marginTop: "5px",
   },
   experienceCircle: {
     height: "6px",
@@ -112,6 +113,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#df0016",
     borderRadius: "50%",
     marginRight: "22px",
+    marginTop: "7px",
   },
   footer: {
     backgroundColor: "#333333",
@@ -127,6 +129,16 @@ const styles = StyleSheet.create({
     height: "17.2mm",
     alignItems: "center",
     fontSize: 9,
+  },
+  p12: {
+    fontSize: 12,
+    marginTop: "2px",
+    fontWeight: "bold",
+  },
+  p9: {
+    fontSize: 9,
+    marginTop: "2px",
+    fontWeight: "bold",
   },
 });
 
@@ -199,27 +211,9 @@ const Resume = ({ data, logo }: Props) => (
             {data.background &&
               data.background.map((item, index) => (
                 <View key={`backgound-${index}`} style={{ marginTop: "15px" }}>
-                  <Text
-                    style={{ fontSize: 9 }}
-                  >{`(${item.from} - ${item.to})`}</Text>
-                  <Text
-                    style={{
-                      fontSize: 14,
-                      marginTop: "2px",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {item.title}
-                  </Text>
-                  <Text
-                    style={{
-                      fontSize: 12,
-                      marginTop: "2px",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {item.institution}
-                  </Text>
+                  <Text style={styles.p12}>{item.title}</Text>
+                  <Text style={styles.p12}>{item.institution}</Text>
+                  <Text style={styles.p9}>{`(${item.from} - ${item.to})`}</Text>
                 </View>
               ))}
           </View>
@@ -242,27 +236,9 @@ const Resume = ({ data, logo }: Props) => (
             {data.engagement &&
               data.engagement.map((item, index) => (
                 <View key={`engagement-${index}`} style={{ marginTop: "15px" }}>
-                  <Text
-                    style={{ fontSize: 9 }}
-                  >{`(${item.from} - ${item.to})`}</Text>
-                  <Text
-                    style={{
-                      fontSize: 14,
-                      marginTop: "2px",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {item.title}
-                  </Text>
-                  <Text
-                    style={{
-                      fontSize: 12,
-                      marginTop: "2px",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {item.organisation}
-                  </Text>
+                  <Text style={styles.p12}>{item.title}</Text>
+                  <Text style={styles.p12}>{item.organisation}</Text>
+                  <Text style={styles.p9}>{`(${item.from} - ${item.to})`}</Text>
                 </View>
               ))}
           </View>
@@ -285,15 +261,7 @@ const Resume = ({ data, logo }: Props) => (
             {data.expertise &&
               data.expertise.map((item, index) => (
                 <View key={`expertise-${index}`} style={{ marginTop: "15px" }}>
-                  <Text
-                    style={{
-                      fontSize: 14,
-                      marginTop: "2px",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {item.title}
-                  </Text>
+                  <Text style={styles.p12}>{item.title}</Text>
 
                   <View
                     style={{
@@ -321,10 +289,10 @@ const Resume = ({ data, logo }: Props) => (
           </View>
         </View>
         <View style={[styles.sectionRight, { color: "#445663" }]}>
-          {sectionText("Erfaring")}
+          <Text style={styles.redLine}>{"Erfaring"}</Text>
           <View
             style={{
-              marginTop: "20px",
+              marginTop: "12px",
             }}
           >
             {data.experience &&
@@ -338,16 +306,17 @@ const Resume = ({ data, logo }: Props) => (
                     }}
                   >
                     <View style={styles.experienceCircle}>
-                      <div></div>
+                      <div />
                     </View>
+
                     <Text
                       style={{
-                        fontSize: 9,
+                        fontSize: 14,
                         marginTop: "6px",
                         fontWeight: "bold",
                       }}
                     >
-                      {item.employer}
+                      {item.title}
                     </Text>
                   </View>
                   <View
@@ -360,22 +329,10 @@ const Resume = ({ data, logo }: Props) => (
                       },
                     ]}
                   >
-                    <Text
-                      style={{
-                        fontSize: 14,
-                        marginTop: "6px",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      {item.title}
+                    <Text style={{ ...styles.p9, marginTop: "0px" }}>
+                      {item.employer}
                     </Text>
-                    <Text
-                      style={{
-                        fontSize: 12,
-                        marginTop: "2px",
-                        fontWeight: "bold",
-                      }}
-                    >{`${item.from} - ${item.to}`}</Text>
+                    <Text style={styles.p9}>{`${item.from} - ${item.to}`}</Text>
                     <View
                       style={{
                         flexDirection: "column",
@@ -416,10 +373,6 @@ const Resume = ({ data, logo }: Props) => (
     </Page>
   </Document>
 );
-
-const sectionText = (text: String) => {
-  return <Text style={styles.redLine}>{text}</Text>;
-};
 
 const ResumeView = async ({ data }: Props) => {
   const logo = await client.fetch(logoQuery(LogoTypes.PlainWhite));
