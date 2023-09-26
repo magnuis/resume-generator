@@ -40,19 +40,25 @@ export default defineType({
         },
       ],
     }),
+
     defineField({
-      name: "bio",
+      name: "biov2",
       title: "Om deg",
-      type: "string",
-      // type: "array",
-      // of: [
-      //   {
-      //     title: "Block",
-      //     type: "block",
-      //     styles: [{ title: "Normal", value: "normal" }],
-      //     lists: [],
-      //   },
-      // ],
+      type: "array",
+      of: [
+        {
+          title: "Block",
+          type: "block",
+          styles: [{ title: "Normal", value: "normal" }],
+          marks: {
+            decorators: [
+              { title: "Bold", value: "strong" },
+              { title: "Italic", value: "em" },
+            ],
+          },
+          lists: [{ title: "Bullet", value: "bullet" }],
+        },
+      ],
     }),
   ],
   preview: {

@@ -40,7 +40,7 @@ interface ResumeType extends base {
       title: string;
       to: string;
       from: string;
-      description: string;
+      descriptionv2: Block[];
     }
   ];
   publishedAt;
@@ -48,7 +48,7 @@ interface ResumeType extends base {
     name: string;
     phone: string;
     email: string;
-    bio: string;
+    biov2: Block[];
     position: string;
     image: Image;
   };

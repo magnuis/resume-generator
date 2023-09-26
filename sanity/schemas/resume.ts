@@ -150,9 +150,23 @@ export default defineType({
               type: "string",
             },
             {
-              name: "description",
+              name: "descriptionv2",
               title: "Beskrivelse (hva gjorde du?)",
-              type: "text",
+              type: "array",
+              of: [
+                {
+                  title: "Block",
+                  type: "block",
+                  styles: [{ title: "Normal", value: "normal" }],
+                  marks: {
+                    decorators: [
+                      { title: "Bold", value: "strong" },
+                      { title: "Italic", value: "em" },
+                    ],
+                  },
+                  lists: [{ title: "Bullet", value: "bullet" }],
+                },
+              ],
             },
           ],
         },
