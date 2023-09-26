@@ -4,6 +4,8 @@ import { ResumeType } from "@/type";
 import Image from "next/image";
 import { client } from "@/sanity/lib/client";
 import imageUrlBuilder from "@sanity/image-url";
+import { PortableText } from "@portabletext/react";
+import { RichTextComponents } from "./misc/RichTextComponents";
 
 const builder = imageUrlBuilder(client);
 
@@ -28,7 +30,7 @@ export default function Resumes({ resumes = [] }: { resumes: ResumeType[] }) {
           resume.employee?.image && (
             <Link
               key={`resume-${index}`}
-              href={resume.slug.current}
+              href={`resumes/${resume.slug.current}`}
               className="p-4 hover:bg-gray-50 border-t-[1px] border-[#333333] mb-4"
             >
               <Image
@@ -47,9 +49,12 @@ export default function Resumes({ resumes = [] }: { resumes: ResumeType[] }) {
               <h1 className="text-xl md:text-3xl font-medium">
                 {resume.employee.name}
               </h1>
-              <p className="text-sm md:text-base line-clamp-2 md:line-clamp-3">
-                {resume.employee.bio}
-              </p>
+              <div className="text-sm md:text-base line-clamp-2 md:line-clamp-3">
+                <PortableText
+                  value={resume.employee.biov2}
+                  components={RichTextComponents}
+                />
+              </div>
             </Link>
           )
       )}

@@ -14,6 +14,8 @@ import { client } from "@/sanity/lib/client";
 import { logoQuery } from "@/sanity/lib/queries";
 import { LogoTypes } from "@/enums/LogoTypes";
 import { Image as SanityImage } from "sanity";
+import { PortableText } from "@portabletext/react";
+import { RichPDFTextComponents } from "../misc/RichPDFTextComponents";
 
 const builder = imageUrlBuilder(client);
 
@@ -174,9 +176,15 @@ const Resume = ({ data, logo }: Props) => (
           >
             {data.employee?.name ?? "Navn navnesen"}
           </Text>
-          <Text style={{ fontSize: 11, fontWeight: "light" }}>
-            {data.employee?.bio ?? "Om deg"}
-          </Text>
+          {data.employee.biov2 && (
+            <PortableText
+              value={data.employee.biov2}
+              components={RichPDFTextComponents({
+                fontSize: 11,
+                fontWeight: "light",
+              })}
+            />
+          )}
         </View>
       </View>
       <View style={styles.section}>
@@ -368,16 +376,23 @@ const Resume = ({ data, logo }: Props) => (
                         fontWeight: "bold",
                       }}
                     >{`${item.from} - ${item.to}`}</Text>
-                    <Text
+                    <View
                       style={{
-                        color: "black",
-                        fontSize: 9,
-                        marginTop: "2px",
-                        fontWeight: "light",
+                        flexDirection: "column",
+                        display: "flex",
+                        gap: 4,
                       }}
                     >
-                      {item.description}
-                    </Text>
+                      <PortableText
+                        value={item.descriptionv2}
+                        components={RichPDFTextComponents({
+                          color: "black",
+                          fontSize: 9,
+                          marginTop: "2px",
+                          fontWeight: "light",
+                        })}
+                      />
+                    </View>
                   </View>
                 </View>
               ))}

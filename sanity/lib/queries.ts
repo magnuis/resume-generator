@@ -10,6 +10,7 @@ export const resumesQuery = groq`
         employee -> {
             name, 
             bio, 
+            biov2, 
             position,
             image
         }, 
@@ -31,6 +32,7 @@ export const resumeQuery = groq`
             phone, 
             email, 
             bio, 
+            biov2,
             position,
             image
         }, 
