@@ -1,6 +1,6 @@
 # Junior Consulting AS resume generator
 
-Tool to create, display and download resumes for [Junior Consulting AS](https://jrc.no/).
+Tool to create, download and display resumes for [Junior Consulting AS](https://jrc.no/).
 
 ## Local development
 
